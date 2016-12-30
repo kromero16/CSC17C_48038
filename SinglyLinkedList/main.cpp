@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: kevin
+ * Author: Kevin Romero
  *
  * Created on December 21, 2016, 5:18 PM
  */
