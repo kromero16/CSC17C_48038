@@ -36,12 +36,7 @@ public:
             delete temp;
         }
         else{
-            for(int i=0;i<pos-2;i++){
-                temp=temp->next;
-            }
-            temp->prev=temp->next;
-            temp->next=temp->prev;
-            delete temp->prev;
+      
         }
     }
     
