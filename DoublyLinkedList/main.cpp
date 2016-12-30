@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Kevin Romero
  * Purpose: Main Implementation of a Doubly Linked List
- * Created on December 26, 2016, 12:08 PM
+ * Created on December 26, 2016, 12:01 PM
  */
 //System Libraries
 #include <iostream>
