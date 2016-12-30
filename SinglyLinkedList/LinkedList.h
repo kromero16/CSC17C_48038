@@ -1,7 +1,7 @@
 /* 
  * File:   LinkedList.h
- * Author: kevin
- *
+ * Author: Kevin Romero
+ * Purpose: Singly Linked List
  * Created on December 21, 2016, 5:18 PM
  */
 

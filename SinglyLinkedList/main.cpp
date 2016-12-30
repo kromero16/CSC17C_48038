@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Kevin Romero
- *
+ * Purpose: Main Implementation of a Singly Linked List
  * Created on December 21, 2016, 5:18 PM
  */
 //System Libraries

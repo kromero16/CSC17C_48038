@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Kevin Romero
- *
+ * Purpose: Main Implementation of a Doubly Linked List
  * Created on December 26, 2016, 12:08 PM
  */
 //System Libraries
@@ -25,13 +25,6 @@ int main(int argc, char** argv) {
     cout<<"Pushing to Back: \n\n";
     list.push_back(89);
     list.push_back(85);
- 
-    cout<<"Printing the Doubly Linked List in Order. \n\n";
-    list.print_list();
-    list.printList_reverse();
-    
-    cout<<"REVERSING LIST. \n\n";
-  list.reverse_List();
     
   list.print_list();
   list.printList_reverse();
@@ -39,10 +32,15 @@ int main(int argc, char** argv) {
     cout<<"Pushing Data : 1313, At Position: 3. \n\n";
     list.push_At(1313,3);
     
-    list.deleteNthNode(3);
+   
     
     list.print_list();
     list.printList_reverse();
+    
+     list.deleteNthNode(3);
+     
+     list.print_list();
+     list.printList_reverse();
     
      int n=list.numNodes();
     cout<<"\n\nThe Number of Nodes was: "<<n<<".\n\n";

@@ -25,17 +25,29 @@ public:
     //Delete nTh Node
     void deleteNthNode(int pos){
         Node<T> *temp=front;
+        Node<T> *curr=NULL;
         
+        //Test Position Range
         cout<<"Removing Node in Position: "<<pos<<" .\n\n";
-        if(pos<=0||pos>numNodes()){
+        if(pos<=0||pos>numNodes()+1){
             cout<<"Position is out of range\n\n";
         }
+        
+        //Delete head is pos==1
         else if(pos==1){
             front=temp->next;
             temp->prev=NULL;
             delete temp;
         }
         else{
+            //Traverse to n-1th node
+            for(int i=0;i<pos-1;i++){
+                temp=temp->next;
+            }
+            curr=temp;                          //Point to n-1
+            curr->prev->next=curr->next;       
+            curr->next=curr->next->prev;
+            delete curr;
       
         }
     }
