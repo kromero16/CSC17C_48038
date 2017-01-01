@@ -20,8 +20,9 @@ int main(int argc, char** argv) {
     
     CircularLinkedList<int> list;
     
-    list.push_back(15);
-    list.push_back(48);
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
     list.printList();
     
    

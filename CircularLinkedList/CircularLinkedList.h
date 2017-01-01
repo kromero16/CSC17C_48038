@@ -22,23 +22,33 @@ class CircularLinkedList{
 private:
     Node<T> *front;
     Node<T> *back;
+   
     
 public:
     
     //Push Front
     void push_back(T n){
+        //Node to push
         Node<T> *newNode=fillNode(n);
         
-        if(front==NULL&&front==back){
-            front=newNode;
-            back=newNode;
+        //Empty Circular List
+        if(front==back&&front==NULL){
+            front=back=newNode;
+            front->next=back->next=NULL;
+            front->prev=back->prev=NULL;
         }
         else{
-        
+            back->next=newNode;
+            
         }
+        
+        
+       
+        
+      
     }
     
-    //Fill Node
+    //Return filled node
     Node<T> *fillNode(T n){
         Node<T> *nNode=new Node<T>;
         nNode->data=n;
@@ -47,6 +57,7 @@ public:
         return nNode;
     }
     
+    /*
     //Print Reverse
     void printList_reverse(){
         Node<T> *temp=back;
@@ -60,7 +71,7 @@ public:
                 temp=temp->prev;
             }cout<<"NULL \n\n";
         }
-    }
+    }*/
     //Print
     void printList(){
         Node<T> *temp=front;
