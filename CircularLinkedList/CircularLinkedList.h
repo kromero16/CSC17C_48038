@@ -22,30 +22,27 @@ class CircularLinkedList{
 private:
     Node<T> *front;
     Node<T> *back;
+    int nodeCount;
    
     
 public:
     
     //Push Front
     void push_back(T n){
-        //Node to push
         Node<T> *newNode=fillNode(n);
         
-        //Empty Circular List
-        if(front==back&&front==NULL){
+        if(front==NULL&&front==back){
             front=back=newNode;
             front->next=back->next=NULL;
             front->prev=back->prev=NULL;
         }
         else{
             back->next=newNode;
-            
+            newNode->prev=back;
+            back=newNode;
+            front->prev=back;
+            back->next=front;
         }
-        
-        
-       
-        
-      
     }
     
     //Return filled node
@@ -54,40 +51,24 @@ public:
         nNode->data=n;
         nNode->next=NULL;
         nNode->prev=NULL;
+        nodeCount++;
         return nNode;
     }
-    
-    /*
-    //Print Reverse
-    void printList_reverse(){
-        Node<T> *temp=back;
-        if(temp==NULL){
-            cout<<"List Empty. \n";
-            return;
-        }
-        else{
-            while(temp!=NULL){
-                cout<<temp->data<<"-> ";
-                temp=temp->prev;
-            }cout<<"NULL \n\n";
-        }
-    }*/
     //Print
     void printList(){
         Node<T> *temp=front;
+        
         if(front==NULL&&front==back){
-            cout<<"List Empty.\n";
+            cout<<"List Empty \n\n";
             return;
         }
-        else{   
-            while(temp!=NULL){ 
-                cout<<temp->data<<"-> ";
-                temp=temp->next;
-        }cout<<"NULL \n\n";
+        else if(nodeCount==1){
+            cout<<temp->data<<"<-> ";
+        }cout<<"\n\n";
         
        }
         
-    }
+    
     
     //Constructor
     CircularLinkedList(){
@@ -101,6 +82,7 @@ public:
             Node<T> *temp=front;
             front=front->next;
             delete temp;
+            back=NULL;
         }
         delete front;
     }
