@@ -22,27 +22,29 @@ class CircularLinkedList{
 private:
     Node<T> *front;
     Node<T> *back;
-    int nodeCount;
+    int size;
    
     
 public:
     
     //Push Front
-    void push_back(T n){
-        Node<T> *newNode=fillNode(n);
+    void push_front(T n){
+        Node<T> *nNode=fillNode(n);
         
-        if(front==NULL&&front==back){
-            front=back=newNode;
+        if(front==NULL){
+            front=nNode;
+            back=nNode;
             front->next=back->next=NULL;
             front->prev=back->prev=NULL;
         }
         else{
-            back->next=newNode;
-            newNode->prev=back;
-            back=newNode;
-            front->prev=back;
+            nNode->next=front;
+            front->prev=nNode;
+            front=nNode;
             back->next=front;
+            front->prev=back;
         }
+        size++;
     }
     
     //Return filled node
@@ -51,21 +53,24 @@ public:
         nNode->data=n;
         nNode->next=NULL;
         nNode->prev=NULL;
-        nodeCount++;
         return nNode;
     }
     //Print
     void printList(){
         Node<T> *temp=front;
         
-        if(front==NULL&&front==back){
-            cout<<"List Empty \n\n";
+        if(front==NULL){
+            cout<<"List Empty. \n\n";
             return;
         }
-        else if(nodeCount==1){
-            cout<<temp->data<<"<-> ";
-        }cout<<"\n\n";
-        
+        else{
+            for(int i=0;i<size;i++){
+                cout<<temp->data<<" <-> ";
+                temp=temp->next;
+            }cout<<"\n\n";
+            
+        }
+           
        }
         
     
@@ -74,6 +79,7 @@ public:
     CircularLinkedList(){
         front=NULL;
         back=NULL;
+        size=0;
     }
     
     //Deconstructor
