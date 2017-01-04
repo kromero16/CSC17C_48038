@@ -63,14 +63,12 @@ public:
             cout<<"List Empty. \n\n";
             return;
         }
-        else{
             for(int i=0;i<size;i++){
                 cout<<temp->data<<" <-> ";
                 temp=temp->next;
+                //return;
             }cout<<"\n\n";
-            
-        }
-           
+            return;
        }
         
     
