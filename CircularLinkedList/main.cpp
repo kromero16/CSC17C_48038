@@ -21,10 +21,16 @@ int main(int argc, char** argv) {
     
     CircularLinkedList<int> list;
     
-  list.push_front(1);
- list.push_front(2);
- //list.push_front(3);
-  //list.push_front(4);
+    list.push_front(0);
+    list.push_front(1);
+    list.push_front(2);
+    list.push_front(3);
+    list.push_front(4);
+    list.push_back(8);
+    list.push_back(7);
+    list.deleteAt(1);
+    list.push_back(43);
+    //list.reverse_List();
     list.printList();
     
    
