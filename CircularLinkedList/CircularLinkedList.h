@@ -26,7 +26,9 @@ private:
    
     
 public:
-    //Delete Node
+    
+    
+    //Delete Node at Position
     void deleteAt(int pos){
         if(front==NULL&&front==back){
             cout<<"List Empty";
