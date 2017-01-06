@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=CircularLinkedList
+PROJECTNAME=CircularDoublyLinkedList
 
 # Active Configuration
 DEFAULTCONF=Debug
