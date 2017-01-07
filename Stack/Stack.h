@@ -38,17 +38,42 @@ public:
         }
     }
     
+    //Return first element w/out deleting
+    T peek(){
+        T n=top->data;
+        return n;
+    }
+    
+    //is Empty
+    bool isEmpty(){
+        if(top==NULL)return true;
+        else{return false;}
+    }
+    
     //Pop First element
-    void pop(){
+    T pop(){
+        //var to hold top element
+        T num;
+        
+        //return null if empty 
         if(top==NULL){
             cout<<"Stack Empty\n";
-            return;
+            return NULL;
         }
         else{
             Node<T> *tmp=top;
+            num=top->data;
+            
+            //traverse
             top=top->next;
+            
+            //remove top element
             delete tmp;
         }
+        
+        //return element popped
+        return num;
+     
     }
     
     //Push Data

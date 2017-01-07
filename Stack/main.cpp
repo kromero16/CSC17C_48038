@@ -20,7 +20,10 @@ int main(int argc, char** argv) {
     stack.push(33);
     stack.push(233);
     stack.push(34444);
-    stack.pop();
+    cout<<"Element Popped: "<<stack.pop()<<"\n";
+    stack.push(99);
+    stack.push(366);
+    cout<<"Peeking Stack: "<<stack.peek()<<"\n";
     stack.print_stack();
     
     
