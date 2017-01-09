@@ -22,32 +22,29 @@ int main(int argc, char** argv){
     //Create Linked list
     LinkedList<int> list;
 
-    //Fill
-    cout<<"Pushing Data: \n\n";
+    
+    //Fill List
     int s=5;
     for(int i=0;i<s;i++){
         while(s>0)list.push_back(s--);
     }
-    
     list.push_back(999);
     list.push_front(67);
     list.push_front(69);
     list.push_back(66);
-    
-    int n=list.getNumNodes();
-    cout<<"Number of Nodes was: "<<n<<".\n\n";
-    
-    list.printList();
-    
-    list.removeNthNode(0);
-    list.removeNthNode(4);
-    list.pushAt(13,6);
   
     //Print
+    list.printList();cout<<"\n\n";
+    
+    //sort
+    cout<<"Sorting the Linked List: \n";
+    list.sort();
     list.printList();
     
-    list.reverseList();
-    list.printList();
+    //Get number of nodes
+    int n=list.getNumNodes();
+    cout<<"Number of Nodes was: "<<n<<".\n\n";
+
 
 
     

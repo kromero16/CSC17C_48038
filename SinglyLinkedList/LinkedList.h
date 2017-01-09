@@ -25,19 +25,67 @@ public:
     //Constructor
     LinkedList(){
         front=NULL;
-        cout<<endl<<"Empty Linked List Created."<<endl<<endl;
     }
     
-    //Reverse a linked list using iteration
-    void reverseList(){
-        cout<<"\n\nReversing the Linked List using Iteration.\n\n";
+    //Sort 
+    void sort(){
+    if (front != 0){
+        Node<T> *current = front;
+        Node<T> *prev = 0;
+        Node<T> *tempNode = 0;
+        int changeFlag = 0;
+        int s=getNumNodes();
         
+        //Find end
+        Node<T> *end=front;
+        while(end->ptr!=NULL){
+            end=end->ptr;
+        }
+        
+        for (int i = 0; i < s; i++) {
+            while (current->ptr != 0){
+                tempNode = current->ptr;
+                
+                if (current->ptr > tempNode->ptr) {
+                    changeFlag = 1;
+                    current->ptr = tempNode->ptr;
+                    tempNode->ptr = current;
+                    if (prev != 0)
+                        prev->ptr = tempNode;
+                    prev = tempNode;
+                    if (front == current)
+                        front = tempNode;
+                    if (current->ptr == 0)
+                        end = current;
+                }
+                else
+                {
+                    prev = current;
+                    current = current->ptr;
+                }
+            }
+            if (changeFlag == 0)
+                break;
+            else
+            {
+                prev = 0;
+                current = front;
+                changeFlag = 0;
+            }
+        }
+    }
+}
+    
+    
+    //Reverse a linked list using iteration
+    void reverseList(){    
         Node<T> *prev,*current,*next;
         current=front;
         prev=NULL;
         
         if(front==NULL){
             cout<<"The Linked List is Empty\n\n";
+            return;
         }
         else{
         while(current!=NULL){
@@ -52,13 +100,12 @@ public:
     }
     
     //Push Node at Position
-    void pushAt(int n, int pos){
-        cout<<"\nPushing Node w/ Data: "<<n<<". At Position: "<<pos<<".\n\n";
-        
+    void pushAt(int n, int pos){     
         Node<T> *next=fillNode(n);
         
         if(pos<=0||pos>getNumNodes()+1){
             cout<<"Position out of List Range.\n\n";
+            return;
         }
         else if(pos==1){
             front=fillNode(n);
@@ -74,14 +121,15 @@ public:
         }
         
     }
+    
     //Remove given node
     void removeNthNode(int n){
         Node<T> *next=front;
         Node<T> *prev=NULL;
         
-        cout<<"\n\nRemoving Node in position: "<<n<<".\n";
         if(n<=0||n>getNumNodes()){
             cout<<"The Nth Node is not Within Range.\n\n";
+            return;
         } 
         else if(n==1){
             front=next->ptr;
@@ -149,13 +197,12 @@ public:
     
     //Print List
     void printList(){
-        cout<<endl<<"Printing Linked List."<<endl<<endl;
         Node<T> *tmp=front;
         
         while(tmp!=NULL){
-            cout<<tmp->data<<" ";
+            cout<<tmp->data<<"-> ";
             tmp=tmp->ptr;
-        }cout<<"\n";
+        }cout<<"NULL \n";
     }
     
     //Destructor
@@ -166,7 +213,6 @@ public:
             delete temp;
         }
         delete front;
-        cout<<endl<<"Memory Cleared."<<endl;
     }
     
 };
