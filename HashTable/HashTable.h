@@ -27,25 +27,35 @@ public:
     
     //Get data at key
     int pop(int key){
+        
+        //Hash Function
         int hash=(key%TABLE_SIZE);
         
+        //If Empty return
         if(table[hash]==NULL){
             return -1;
         }
         else{
+            
+            //Create new Node with table at hash index
             Node<T> *tmp=table[hash];
+            
+            //Traverse if not empty and wrong index
             while(tmp!=NULL&&tmp->key!=key){
                 tmp=tmp->next;
             }
+            //Check If Empty
             if(tmp==NULL){
                 return -1;
             }
             else{
+                //If not return data
                 return tmp->data;
             }
         }
     }
     
+    //Return filled node with index and data
     Node<T> *fillNode(int k,T n){
         Node<T> *nNode=new Node<T>;
         nNode->key=k;
@@ -56,21 +66,28 @@ public:
     
     //Push Data
     void push(int key,T n){
+        //Hash Function
         int hash=(key%TABLE_SIZE);
         
+        //If Table index empty add
         if(table[hash]==NULL){
             table[hash]=fillNode(key,n);
         }
         else{
+            //Create new Node with table hash index
             Node<T> *newNode=table[hash];
             
+            //Traverse until NULL
             while(newNode->next!=NULL){
                 newNode=newNode->next;
             }
+            
+            //If keys match set data
             if(newNode->key==key){
                 newNode->data=n;
             }
             else{
+                //Set next node in LL as one with key/index
                 newNode->next=fillNode(key,n);
             }
         }

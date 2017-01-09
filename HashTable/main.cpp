@@ -19,14 +19,15 @@ int main(int argc, char** argv) {
     srand(static_cast<unsigned int>(time(0)));
     
     HashTable<int> hTable;
-    int s=159;
+    int s=100000;
     for(int i=0;i<s;i++){
         int r=rand();
         hTable.push(i,r);
     }
+
     
     for(int i=0;i<s;i++){
-        cout<<hTable.pop(i)<<" \n";
+        cout<<hTable.pop(i)<<"\n";
     }
     
     
