@@ -1,8 +1,8 @@
 /* 
  * File:   Node.h
  * Author: Kevin Romero
- * Pupose: Node for Linked List to build a Queue
- * Created on January 7, 2017, 9:03 AM
+ * Purpose: Node for Priority Queue using Linked List
+ * Created on January 7, 2017, 10:24 AM
  */
 
 #ifndef NODE_H
@@ -13,10 +13,10 @@
 
 template<class T>
 struct Node{
+    int priority;
     T data;
-    Node<T> *next;
+    Node *next;
 };
-
 
 
 #endif /* NODE_H */

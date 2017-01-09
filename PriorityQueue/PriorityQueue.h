@@ -1,12 +1,12 @@
 /* 
  * File:   Queue.h
  * Author: Kevin Romero
- * Purpose: Queue using a Linked List
+ * Purpose: Priority Queue using a Linked List
  * Created on January 7, 2017, 9:04 AM
  */
 
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef PRIORITYQUEUE_H
+#define PRIORITYQUEUE_H
 
 //System Libraries
 #include <cstdlib>
@@ -18,17 +18,15 @@ using namespace std;
 
 //Create Class 
 template<class T>
-class Queue{
+class PriorityQueue{
 private:
     Node<T> *front;
-    Node<T> *back;
     
 public:
     
     //Constructor
-    Queue(){
+    PriorityQueue(){
         front=NULL;
-        back=NULL;
     }
     
     //Print Queue
@@ -41,8 +39,8 @@ public:
             while(temp!=NULL){
                 cout<<temp->data<<"-> ";
                 temp=temp->next;
-            }cout<<"BACK";
-            cout<<"\n";
+            }
+            cout<<"\n\n";
         }
     }
     
@@ -60,35 +58,39 @@ public:
     }
     
     //Push Element 
-    void enqueue(T n){
-        Node<T> *newNode=fillNode(n);
-        if(front==NULL){
+    void enqueue(T n, int p){
+        Node<T> *newNode=fillNode(n,p);
+        if(front==NULL||p<front->priority){
+            newNode->next=front;
             front=newNode;
-            back=newNode;
         }
         else{
-            back->next=newNode;
-            back=newNode;
-            
+            Node<T> *tmp=front;
+            while(tmp->next!=NULL&&tmp->next->priority<=p){
+                tmp=tmp->next;
+            }
+            newNode->next=tmp->next;
+            tmp->next=newNode;
         }
     }
     
     //Return Filled Node
-    Node<T> *fillNode(T n){
+    Node<T> *fillNode(T n,int p){
         Node<T> *nNode=new Node<T>;
+        nNode->priority=p;
         nNode->data=n;
         nNode->next=NULL;
         return nNode;
     }
     
     //Destructor
-    ~Queue(){
+    ~PriorityQueue(){
         if(front==NULL)return;
-        else{
+        else{ 
             while(front!=NULL){
-                back=front;
-                front=front->next;
-                delete back;
+              Node<T> *temp=front;
+              front=front->next;
+                delete temp;
             }
             delete front;
         }
@@ -99,4 +101,5 @@ public:
 
 
 #endif /* QUEUE_H */
+
 
