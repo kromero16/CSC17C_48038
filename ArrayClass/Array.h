@@ -64,6 +64,25 @@ public:
             return indx;
     }
     
+    //Insertion sort
+    void insertion_sort(){
+        for(int i=0;i<SIZE;i++){
+            int j=i;
+            while(j>0&&array[j-1]>array[j]){
+                swap(array[j],array[j-1]);
+                j--;
+            }
+        }
+    }
+    
+    void insert(int rIndx, int n){
+        for(int i=0;i>=0&&array[i]>n;i--){
+            array[i+1]=array[i];
+        }
+        array[rIndx+1]=n;
+        
+    }
+    
     //Selection sort
     void selection_sort(){
         int minElem,tmp;
@@ -85,11 +104,11 @@ public:
     }
     
     //Swap function 
-    void swap(int &v1,int &v2){
+    void swap(int &a,int &b){
         int tmp;
-        tmp=v1;
-        v1=v2;
-        v2=tmp;
+        tmp=a;
+        a=b;
+        b=tmp;
     }
     
     //Push data

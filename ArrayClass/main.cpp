@@ -27,10 +27,10 @@ int main(int argc, char** argv){
     
     Array nArray(100);
     nArray.fill();
-    nArray.selection_sort();   
+    nArray.insertion_sort();   
     nArray.print();
     
-    do{
+    /*do{
     cout<<"Enter a number to search for. \n";
     cin>>n;
    
@@ -44,7 +44,7 @@ int main(int argc, char** argv){
     cout<<"Repeat Search? Y/N \n\n";
     cin>>ch;
     
-    }while(ch!='n'&&ch!='N');
+    }while(ch!='n'&&ch!='N');*/
        
         
         
