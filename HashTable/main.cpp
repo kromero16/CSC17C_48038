@@ -1,37 +1,42 @@
-/* 
- * File:   main.cpp
- * Author: Kevin Romero
- * Purpose: Main Implementation of a Hash Table using Linked List Closed Addressing
- * Created on January 9, 2017, 2:15 PM
+/*
+ * Name: Kevin Romero
+ * Purpose: Main Implementation of a Hash Table using Linked List Chaining
+ * Date: January 27, 2017
+ * 
  */
 
 //System Libraries
-#include <cstdlib>
-#include <ctime>
 #include <iostream>
+#include <cstdlib>
+#include <string>
 using namespace std;
 
 //User Libraries
 #include "HashTable.h"
 
 //Begin Execution
-int main(int argc, char** argv) {
-    srand(static_cast<unsigned int>(time(0)));
+int main(int argc, char **argv){
+    //test
+    HashTable<string> table;
     
-    HashTable<int> hTable;
-    int s=100000;
-    for(int i=0;i<s;i++){
-        int r=rand();
-        hTable.push(i,r);
+    string myString="Kevin";
+    string myString2="kevin";
+    string mString="keviN";
+    
+    cout<<"Hashing String: "<<myString<<"\n";
+    int hash=table.nHash(myString);
+    cout<<"Hashed Index: "<<hash<<"\n\n";
+    
+    
+    //table.push(myString);
+    
+    cout<<"Printing contents in table: \n";
+    for(int i=0;i<TABLE_SIZE;i++){
+        cout<<table.getIndx(i)<<"\n";
     }
-
-    
-    for(int i=0;i<s;i++){
-        cout<<hTable.pop(i)<<"\n";
-    }
     
     
-    //Exit Program
+    
+    //Exit Program 
     return 0;
 }
-

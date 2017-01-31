@@ -1,25 +1,23 @@
-/* 
- * File:   Node.h
- * Author: Kevin Romero
- * Purpose: Node Class for Hash Table using Linked List Chaining
- * Created on January 9, 2017, 2:16 PM
+/*
+ *  Name: Kevin Romero
+ *  Purpose: Node for Hash Table using Linked List Chaining
+ *  Date: January 27, 2017
  */
 
 #ifndef NODE_H
 #define NODE_H
 
+
 //System Libraries
 #include <cstdlib>
 
+//Create Node Structure
 template<class T>
 struct Node{
-    int key;
     T data;
     Node<T> *next;
 };
 
 
-
-
-#endif /* NODE_H */
-
+#endif
+      
