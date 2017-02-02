@@ -17,6 +17,7 @@ class Array{
 private:
     int SIZE;
     int maxSize;
+    int heapSize;
     int *array;
     
     //Private member functions
@@ -64,6 +65,20 @@ public:
         else
             return indx;
     }
+    
+    //Main Heap Sort
+    void heapSort(){
+        build_heap();
+        for(int i=SIZE;i>=2;i--){   //check >= or <=
+            swap(array[1],array[i]);
+            heapSize=heapSize-1;
+            max_heapify(1);
+        }
+    }
+    
+    //Heap Sort Helper Functions
+    void max_heapify(int);
+    void build_heap();
     
     //merge sort
     void merge_sort(){
@@ -164,6 +179,7 @@ public:
     Array(int s){
         SIZE=s;
         maxSize=SIZE;
+        heapSize=SIZE;
         array=new int[SIZE];
     }
     

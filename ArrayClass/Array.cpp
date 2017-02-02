@@ -8,6 +8,33 @@
 //User Libraries
 #include "Array.h"
 
+//Implement BUILD_HEAP
+void Array::build_heap(){
+    for(int i=(SIZE/2);i>=1;i--){ //check >= or <=
+        max_heapify(i);
+    }
+}
+
+//Implement MAX_HEAPIFY for HeapSort
+void Array::max_heapify(int i){
+    int largest;
+    int l=(2*i);
+    int r=(2*i+1);
+    
+    if((l<=heapSize)&&(array[l]>array[i])){
+        largest=l;
+    }
+    else
+        largest=i;
+    if((r<=heapSize)&&(array[r]>array[largest])){
+        largest=r;
+    }
+    if(largest!=i){
+        swap(array[i],array[largest]);
+        max_heapify(largest);
+    }
+}
+
 //Implement private merge sort helper function
 void Array::mergeSort(int p, int r){
         int q;
