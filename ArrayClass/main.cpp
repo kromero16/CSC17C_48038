@@ -25,9 +25,9 @@ int main(int argc, char** argv){
     char ch;
     int n;
     
-    Array nArray(100);
+    Array nArray(25);
     nArray.fill();  
-    nArray.heapSort();
+    nArray.quicksort();
     nArray.print();
     
     /*do{

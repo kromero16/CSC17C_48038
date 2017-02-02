@@ -23,6 +23,7 @@ private:
     //Private member functions
     int *push(int);                
     void mergeSort(int,int);   
+    void qSort(int,int);
     
 public:
     
@@ -66,19 +67,25 @@ public:
             return indx;
     }
     
-    //Main Heap Sort
-    void heapSort(){
-        build_heap();
-        for(int i=SIZE;i>=2;i--){   //check >= or <=
-            swap(array[1],array[i]);
-            heapSize=heapSize-1;
-            max_heapify(1);
-        }
+    //Quicksort
+    void quicksort(){
+        qSort(0,SIZE-1);
     }
     
-    //Heap Sort Helper Functions
-    void max_heapify(int);
-    void build_heap();
+    //qsort partition
+    int partition(int p,int r){
+        int x=array[r];
+        int i=p-1;
+        
+        for(int j=p;j<=r-1;j++){
+            if(array[j]<=x){
+                i=i+1;
+                swap(array[i],array[j]);
+            }
+        }
+        swap(array[i+1],array[r]);
+        return i+1;
+    }
     
     //merge sort
     void merge_sort(){
@@ -171,7 +178,7 @@ public:
     //Fill array with random numbers
     void fill(){
         for(int i=0;i<SIZE;i++){
-            array[i]=rand()%999+1;  //1-999
+            array[i]=rand()%90+10;
         }
     }
     
