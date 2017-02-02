@@ -8,6 +8,17 @@
 //User Libraries
 #include "Array.h"
 
+//Implement private merge sort helper function
+void Array::mergeSort(int p, int r){
+        int q;
+        if(p<r){
+            q=(p+r)/2;
+            mergeSort(p,q);
+            mergeSort(q+1,r);
+            merge(p,q,r);
+        }
+}
+
 //Implement private push function
 int *Array::push(int n){
     if(maxSize==SIZE){

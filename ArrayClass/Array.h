@@ -20,7 +20,8 @@ private:
     int *array;
     
     //Private member functions
-    int *push(int);                 //Defined in Array.cpp
+    int *push(int);                
+    void mergeSort(int,int);   
     
 public:
     
@@ -64,6 +65,43 @@ public:
             return indx;
     }
     
+    //merge sort
+    void merge_sort(){
+        mergeSort(0,SIZE-1);
+    }
+    
+    //Merge function 
+    void merge(int p,int q,int r){
+        int n1=q-p+1;
+        int n2=r-q;
+        int L[n1+1];
+        int R[n2+1];
+        
+        //Copy contents
+        for(int i=1;i<=n1;i++){
+            L[i]=array[p+i-1];
+        }
+        for(int j=1;j<=n2;j++){
+            R[j]=array[q+j];
+        }
+        
+        //add sentinels
+        L[n1+1]=999;
+        R[n2+1]=999;
+        
+        int i=1, j=1;
+        for(int k=p;k<=r;k++){
+            if(L[i]<=R[j]){
+                array[k]=L[i];
+                i=i+1;
+            }
+            else{
+                array[k]=R[j];
+                j=j+1;
+            }
+        }
+    }
+    
     //Insertion sort
     void insertion_sort(){
         for(int i=0;i<SIZE;i++){
@@ -73,14 +111,6 @@ public:
                 j--;
             }
         }
-    }
-    
-    void insert(int rIndx, int n){
-        for(int i=0;i>=0&&array[i]>n;i--){
-            array[i+1]=array[i];
-        }
-        array[rIndx+1]=n;
-        
     }
     
     //Selection sort
