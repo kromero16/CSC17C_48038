@@ -5,6 +5,22 @@
  * Created on January 30, 2017, 1:47 PM
  */
 
+/*
+ Sorting Functions:
+ * QuickSort
+ * Selection Sort
+ * Merge Sort
+ * Insertion Sort
+ * 
+ Search Functions:
+ * Binary Search
+ * Sequential Search
+ 
+ 
+ 
+ 
+ */
+
 #ifndef ARRAY_H
 #define ARRAY_H
 

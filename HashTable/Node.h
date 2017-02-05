@@ -10,12 +10,12 @@
 
 //System Libraries
 #include <cstdlib>
+#include <string>
 
 //Create Node Structure
-template<class T>
 struct Node{
-    T data;
-    Node<T> *next;
+    string data;
+    Node *next;
 };
 
 

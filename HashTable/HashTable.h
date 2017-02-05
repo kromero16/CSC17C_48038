@@ -21,58 +21,33 @@ using namespace std;
 const int TABLE_SIZE=128;
 
 //Create Table Class
-template<class T>
 class HashTable{
 private:
-    Node<T> **table;
+    Node **table;
     
 public:
     
-    //get index
-    T getIndx(T n){
-        //Hash string 
-        int index=nHash(n);
+    string getIndx(string key){
+        int indx=nHash(key);
         
-        //If empty return
-        if(table[index]==NULL){
+        if(table[indx]==NULL){
             return "-1";
         }
         else{
-            //Create new node with hashed table index
-            Node<T> *tmp=table[index];
+            Node *nNode=table[indx];
             
-            //Traverse if not empty and wrong index
-            while(tmp!=NULL&&tmp->data!=n){
-                tmp=tmp->next;
+            while(nNode!=NULL&&nNode->data!=key){
+                nNode=nNode->next;
             }
-            
-            //Check if index empty
-            if(tmp==NULL){
+            if(nNode==NULL)
                 return "-1";
-            }
-            else{
-                //return data if not empty
-                return tmp->data;
-            }
+            else
+                return nNode->data;
         }
-    }
- 
-    //String hash function
-    int nHash(string n){
-        int val=0;
-        for(int i=0;i<n.length();i++){
-            val+=n[i];
-        }
-        return (val%TABLE_SIZE);
-    }
-    
-    //int hash function
-    int intHash(T n){
-        return (n%TABLE_SIZE);
     }
     
     //push data to table
-    void push(T n){
+    void push(string n){
         //Hash string to find key index
         int index=nHash(n);
         
@@ -83,7 +58,7 @@ public:
         //else table index not empty
         else{
             //Create new node with given hashed index
-            Node<T> *nNode=table[index];
+            Node *nNode=table[index];
             
             //Traverse until null
             while(nNode->next!=NULL){
@@ -98,17 +73,21 @@ public:
                 //Collision, set to next node
                 nNode->next=fillNode(n);
             }
+        } 
+    }
+    
+    //String hash
+    int nHash(string n){
+        int val=0;
+        for(int i=0;i<n.length();i++){
+            val+=n[i];
         }
-        
-        
-        
-        
-        
+        return (val%TABLE_SIZE);
     }
     
     //fill a node
-    Node<T> *fillNode(T n){
-        Node<T> *nNode=new Node<T>;
+    Node *fillNode(string n){
+        Node *nNode=new Node;
         nNode->data=n;
         nNode->next=NULL;
         return nNode;
@@ -116,7 +95,7 @@ public:
     
     //Constructor
     HashTable(){
-        table=new Node<T> *[TABLE_SIZE];
+        table=new Node *[TABLE_SIZE];
         for(int i=0;i<TABLE_SIZE;i++){
             table[i]=NULL;
         }
@@ -125,9 +104,9 @@ public:
     //Destructor
     ~HashTable(){
         for(int i=0;i<TABLE_SIZE;i++){
-            if(table[i]==NULL){
-                Node<T> *tmp=table[i];
-                Node<T> *prev=NULL;
+            if(table[i]!=NULL){
+                Node *tmp=table[i];
+                Node *prev=NULL;
                 
                 while(tmp!=NULL){
                     prev=tmp;

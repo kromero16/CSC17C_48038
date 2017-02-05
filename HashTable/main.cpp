@@ -17,24 +17,15 @@ using namespace std;
 //Begin Execution
 int main(int argc, char **argv){
     //test
-    HashTable<string> table;
+    HashTable table;
     
     string myString="Kevin";
     string myString2="kevin";
     string mString="keviN";
     
-    cout<<"Hashing String: "<<myString<<"\n";
-    int hash=table.nHash(myString);
-    cout<<"Hashed Index: "<<hash<<"\n\n";
-    
-    
-    //table.push(myString);
-    
-    cout<<"Printing contents in table: \n";
-    for(int i=0;i<TABLE_SIZE;i++){
-        cout<<table.getIndx(i)<<"\n";
-    }
-    
+    table.push(myString);
+    table.push(myString2);
+    table.push(mString);
     
     
     //Exit Program 
