@@ -15,6 +15,7 @@
 //Create Node Structure
 struct Node{
     string data;
+    string key;
     Node *next;
 };
 

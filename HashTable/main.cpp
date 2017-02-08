@@ -19,14 +19,12 @@ int main(int argc, char **argv){
     //test
     HashTable table;
     
-    string myString="Kevin";
-    string myString2="kevin";
-    string mString="keviN";
+    string key="Kevin";
+    string value="9515302775";
     
-    table.push(myString);
-    table.push(myString2);
-    table.push(mString);
-    
+    table.push(key,value);
+    cout<<table.get(key)<<"\n";
+
     
     //Exit Program 
     return 0;

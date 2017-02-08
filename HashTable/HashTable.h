@@ -26,68 +26,65 @@ private:
     Node **table;
     
 public:
-    
-    string getIndx(string key){
-        int indx=nHash(key);
+    /*int binary_search(string n){
+        int l=0;
+        int r=TABLE_SIZE-1;
         
-        if(table[indx]==NULL){
+        while(l<=r){
+            int mid=(l+r)/2;
+            if(table[mid]>n)
+                r=mid+1;
+            else if(table[mid]<n)
+                l=mid+1;
+            else
+                return mid;
+        }
+        return -1;
+    }*/
+    
+    
+    //Get data at key
+    string get(string k){
+        int index=nHash(k);
+        while(table[index]!=NULL&&table[index]->key!=k){
+            index=(index+1)%TABLE_SIZE;
+        }
+        if(table[index]==NULL){
             return "-1";
         }
         else{
-            Node *nNode=table[indx];
-            
-            while(nNode!=NULL&&nNode->data!=key){
-                nNode=nNode->next;
-            }
-            if(nNode==NULL)
-                return "-1";
-            else
-                return nNode->data;
+            return table[index]->data;
         }
     }
+
     
     //push data to table
-    void push(string n){
+    void push(string k,string n){
         //Hash string to find key index
-        int index=nHash(n);
+        int index=nHash(k);
         
-        //If array index empty then add
-        if(table[index]==NULL){
-            table[index]=fillNode(n);
+        while(table[index]!=NULL&&table[index]->key!=k){
+            index=(index+1)%TABLE_SIZE;
         }
-        //else table index not empty
-        else{
-            //Create new node with given hashed index
-            Node *nNode=table[index];
-            
-            //Traverse until null
-            while(nNode->next!=NULL){
-                nNode=nNode->next;
-            }
-            
-            //If keys match set data
-            if(nNode->data==n){
-                nNode->data=n;
-            }
-            else{
-                //Collision, set to next node
-                nNode->next=fillNode(n);
-            }
-        } 
+        if(table[index]!=NULL){
+            delete table[index];
+        }
+        table[index]=fillNode(k,n);
     }
     
     //String hash
-    int nHash(string n){
+    int nHash(string k){
         int val=0;
-        for(int i=0;i<n.length();i++){
-            val+=n[i];
+        for(int i=0;i<k.length();i++){
+            val+=k[i];
         }
         return (val%TABLE_SIZE);
     }
     
     //fill a node
-    Node *fillNode(string n){
+    Node *fillNode(string k,string n){
         Node *nNode=new Node;
+        nNode->key=k;
         nNode->data=n;
         nNode->next=NULL;
         return nNode;
