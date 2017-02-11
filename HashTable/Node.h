@@ -14,11 +14,10 @@
 
 //Create Node Structure
 struct Node{
-    string data;
     string key;
+    string data;
     Node *next;
 };
-
 
 #endif
       
