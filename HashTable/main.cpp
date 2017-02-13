@@ -21,9 +21,13 @@ int main(int argc, char **argv){
     
     string name="Kevin";
     string number="9515302775";
+    string name1="kevin";
+    string num1="9515094562";
     table.push(name,number);
-    cout<<table.get(name)<<"\n";
-
+    table.push(name1,num1);
+    table.push("Anthony","9094856254");
+    string n="mark";
+    table.sequential_search("Anthony");
     
     //Exit Program 
     return 0;

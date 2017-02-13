@@ -34,6 +34,24 @@ public:
         }
     }
     
+    //sequentially search
+    void sequential_search(string key){
+        int index=hash(key);
+        for(int i=1;i<TABLE_SIZE;i++){
+            if(table[index]->key==key){
+                cout<<"Key Found: "<<table[index]->data<<"\n";
+                break;
+            }
+            else{
+                cout<<"Key Not Found\n";
+            }
+        }
+      
+         
+      
+          
+    }
+    //Get data at given key
     string get(string key){
         int index=hash(key);
         
