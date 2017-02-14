@@ -19,15 +19,23 @@ int main(int argc, char **argv){
     //test
     HashTable table;
     
-    string name="Kevin";
-    string number="9515302775";
-    string name1="kevin";
-    string num1="9515094562";
-    table.push(name,number);
-    table.push(name1,num1);
-    table.push("Anthony","9094856254");
-    string n="mark";
-    table.sequential_search("Anthony");
+
+    table.push("ken","9515302775");
+    table.push("Ken","9094561234");
+    table.push("kEn","6194528548");
+    table.push("keN","4895024513");
+    table.push("KEN","3285412685");
+    table.push("Cristal","9515302456");
+    table.sequential_search("ken");
+    table.sequential_search("Ken");
+    cout<<table.hash("ken")<<"\n";
+    cout<<table.hash("Ken")<<"\n";
+    cout<<table.hash("kEn")<<"\n";
+    
+    
+ 
+ 
+ 
     
     //Exit Program 
     return 0;

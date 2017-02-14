@@ -18,7 +18,7 @@ using namespace std;
 #include "Node.h"
 
 //Global Variables
-const int TABLE_SIZE=128;
+const int TABLE_SIZE=8;
 
 //Create Hash Table Object
 class HashTable{
@@ -37,19 +37,18 @@ public:
     //sequentially search
     void sequential_search(string key){
         int index=hash(key);
-        for(int i=1;i<TABLE_SIZE;i++){
-            if(table[index]->key==key){
+        
+        //Traverse until empty cell
+        while(table[index]!=NULL){
+            if(table[index]->key==key)
                 cout<<"Key Found: "<<table[index]->data<<"\n";
-                break;
-            }
-            else{
-                cout<<"Key Not Found\n";
-            }
+            else if(table[index]->key!=key)
+                cout<<"Key Not Found.\n";
+           // ++index;
+           // index%=TABLE_SIZE;
         }
-      
-         
-      
-          
+       
+             
     }
     //Get data at given key
     string get(string key){
