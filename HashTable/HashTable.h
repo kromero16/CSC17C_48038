@@ -18,7 +18,7 @@ using namespace std;
 #include "Node.h"
 
 //Global Variables
-const int TABLE_SIZE=8;
+const int TABLE_SIZE=128;
 
 //Create Hash Table Object
 class HashTable{
@@ -44,8 +44,8 @@ public:
                 cout<<"Key Found: "<<table[index]->data<<"\n";
             else if(table[index]->key!=key)
                 cout<<"Key Not Found.\n";
-           // ++index;
-           // index%=TABLE_SIZE;
+           ++index;
+           index%=TABLE_SIZE;
         }
        
              
